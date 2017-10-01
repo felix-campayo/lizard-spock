@@ -1,0 +1,23 @@
+  <div class="ui-g">
+    <h1 class="ui-g-12 title">{{title}}</h1>
+      <app-player
+        class="ui-g-12 ui-md-6"
+        [cards]="cards"
+        [player]="player1"
+        [animatedGifUrl]="animatedGifUrl"
+        (turn)="cardSelected($event)"
+      ></app-player>
+      <app-player
+        class="ui-g-12 ui-md-6"
+        [cards]="cards"
+        [player]="player2"
+        [animatedGifUrl]="animatedGifUrl"
+        (turn)="cardSelected($event)"
+      ></app-player>
+    <div class="ui-g-12 result-text">
+      <h3 *ngIf="turnWinner">The winner is: {{turnWinner.player?.name}}</h3>
+      <h3 *ngIf="isDraw">Draw</h3>
+    </div>
+      <button pButton type="button" class="button ui-g-12" label="Reset" [disabled]="!turn1 || !turn2" (click)="resetClick()"></button>
+  </div>
+
